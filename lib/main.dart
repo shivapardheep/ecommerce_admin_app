@@ -1,4 +1,4 @@
-import 'package:ecommerce_admin_app/screens/home_screen.dart';
+import 'package:ecommerce_admin_app/screens/home/home_screen.dart';
 import 'package:ecommerce_admin_app/utils/functionalities/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,9 +6,10 @@ import 'package:provider/provider.dart';
 void main() => runApp(
       ChangeNotifierProvider(
         create: (_) => FunctionalitiesProvider(),
-        child: const MaterialApp(
+        child: MaterialApp(
+          theme: ThemeData(),
           debugShowCheckedModeBanner: false,
-          home: MyApp(),
+          home: const MyApp(),
         ),
       ),
     );

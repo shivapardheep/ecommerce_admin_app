@@ -1,9 +1,9 @@
-import 'package:ecommerce_admin_app/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../responsive.dart';
 import '../../widgets/header.dart';
 import 'components/intro_card.dart';
+import 'components/recent_orders.dart';
 
 class DashBoardScreen extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffold;
@@ -74,9 +74,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       padding: const EdgeInsets.only(left: 1),
       child: Container(
         color: Colors.white,
+        height: height,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               !Responsive.isDesktop(context)
                   ? IconButton(
@@ -89,117 +91,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               HeaderWidget(height: height, scaffold: widget.scaffold),
               IntroCards(iconsList: iconsList),
               SizedBox(height: height * 0.03),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text("Latest Orders",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                    TextButton(
-                        onPressed: () {},
-                        child: const Text("See all",
-                            style: TextStyle(color: Colors.blue))),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Column(
-                  children: List.generate(
-                      ordersList.length,
-                      (index) => OrderCardWidget(
-                          orderModel: ordersList[index],
-                          index: index,
-                          onTap: () {})),
-                ),
-              ),
+              const RecentOrderTitle(),
+              RecentOrdersWidget(ordersList: ordersList),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class OrderCardWidget extends StatelessWidget {
-  final OrderModel orderModel;
-  final int index;
-  final VoidCallback onTap;
-
-  const OrderCardWidget(
-      {super.key,
-      required this.orderModel,
-      required this.index,
-      required this.onTap});
-  @override
-  Widget build(BuildContext context) {
-    int selectedOrder = 1;
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Material(
-        borderRadius: BorderRadius.circular(10),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(10),
-          onTap: onTap,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: selectedOrder == index
-                  ? null
-                  : Border.all(color: Colors.grey.shade200),
-              boxShadow: [
-                selectedOrder == index
-                    ? BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        offset: const Offset(0, 2),
-                        blurRadius: 4,
-                        spreadRadius: 1,
-                      )
-                    : const BoxShadow(color: Colors.white),
-              ],
-              color: selectedOrder == index ? Colors.white : null,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: selectedOrder == index
-                            ? primaryColor
-                            : Colors.grey.shade100),
-                    child: Center(
-                        child: Text(
-                      (index + 1).toString(),
-                      style: TextStyle(
-                          color: selectedOrder == index
-                              ? Colors.white
-                              : Colors.grey,
-                          fontSize: 15),
-                    )),
-                  ),
-                  Text(orderModel.referenceId),
-                  Text("${orderModel.price} USD"),
-                  Responsive.isMobile(context)
-                      ? const Icon(Icons.verified, color: Colors.green)
-                      : Text(orderModel.status),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.arrow_forward_rounded,
-                        color:
-                            selectedOrder == index ? primaryColor : Colors.grey,
-                      ))
-                ],
-              ),
-            ),
           ),
         ),
       ),

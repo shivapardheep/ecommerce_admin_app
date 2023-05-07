@@ -36,13 +36,18 @@ class DrawerWidget extends StatelessWidget {
                 : Container(),
             const OfferCardWidget(),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: Responsive.isDesktop(context) ? 10 : 30),
               child: ListTile(
                 leading: ClipRRect(
                   child: Image.asset("assets/images/logo_name.png"),
                 ),
                 title: const Text("Sivaram pr"),
-                subtitle: const Text("ram614709@gmail.com"),
+                subtitle: const Text(
+                  "ram614709@gmail.com",
+                  style: TextStyle(fontSize: 12),
+                ),
               ),
             ),
           ],

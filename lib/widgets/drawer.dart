@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
+import '../responsive.dart';
 import '../screens/home/components/offer_card.dart';
 import '../screens/home/components/tile_widget.dart';
 
@@ -12,6 +13,7 @@ class DrawerWidget extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Drawer(
+      backgroundColor: Colors.white,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -27,6 +29,11 @@ class DrawerWidget extends StatelessWidget {
                   }),
             ),
             const SizedBox(height: 20),
+            Responsive.isMobile(context)
+                ? SizedBox(
+                    height: height * 0.1,
+                  )
+                : Container(),
             const OfferCardWidget(),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),

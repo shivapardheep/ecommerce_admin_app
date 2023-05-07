@@ -1,3 +1,4 @@
+import 'package:ecommerce_admin_app/responsive.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -10,7 +11,8 @@ class OfferCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+      padding: EdgeInsets.symmetric(
+          vertical: 10, horizontal: Responsive.isDesktop(context) ? 30 : 50),
       child: Stack(
         alignment: Alignment.center,
         clipBehavior: Clip.none,
@@ -18,7 +20,7 @@ class OfferCardWidget extends StatelessWidget {
           Container(
             height: 120,
             width: double.infinity,
-            padding: const EdgeInsets.all(15),
+            padding: EdgeInsets.all(Responsive.isDesktop(context) ? 15 : 20),
             decoration: BoxDecoration(
               color: darkBlue,
               borderRadius: BorderRadius.circular(10),
@@ -54,7 +56,7 @@ class OfferCardWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20), color: Colors.white),
               child: const Text(
                 "See More",
-                style: TextStyle(color: Colors.deepOrange),
+                style: TextStyle(color: primaryColor),
               ),
             ),
           ),

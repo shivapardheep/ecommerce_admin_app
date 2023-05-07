@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'screens/home/home_screen.dart';
+import 'models/icons_model.dart';
 
 const String appName = "Shiva Shoppi";
 const Color darkBlue = Color(0xff010b1c);
+const Color primaryColor = Colors.deepOrange;
 
 List iconsList = [
   IconsModel(

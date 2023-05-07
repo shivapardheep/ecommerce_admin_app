@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../../models/icons_model.dart';
 import '../../../utils/functionalities/provider.dart';
-import '../home_screen.dart';
 
 class TileWidgets extends StatelessWidget {
   final IconsModel iconsModel;

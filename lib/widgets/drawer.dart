@@ -38,10 +38,18 @@ class DrawerWidget extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(
                   vertical: 10,
-                  horizontal: Responsive.isDesktop(context) ? 10 : 30),
+                  horizontal: Responsive.isDesktop(context) ? 15 : 30),
               child: ListTile(
-                leading: ClipRRect(
-                  child: Image.asset("assets/images/logo_name.png"),
+                horizontalTitleGap: 15,
+                onTap: () {},
+                leading: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      image: const DecorationImage(
+                          image: AssetImage("assets/images/myImage.jpg"),
+                          fit: BoxFit.cover)),
                 ),
                 title: const Text("Sivaram pr"),
                 subtitle: const Text(

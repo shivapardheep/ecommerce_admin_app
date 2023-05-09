@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class HeaderWidget extends StatefulWidget {
-  final double height;
-  final GlobalKey<ScaffoldState> scaffold;
-
-  const HeaderWidget({super.key, required this.height, required this.scaffold});
+  const HeaderWidget({super.key});
 
   @override
   State<HeaderWidget> createState() => _HeaderWidgetState();
@@ -14,14 +11,15 @@ class HeaderWidget extends StatefulWidget {
 
 class _HeaderWidgetState extends State<HeaderWidget> {
   void _openEndDrawer() {
-    widget.scaffold.currentState!.openEndDrawer();
+    homeScreenScaffold.currentState!.openEndDrawer();
   }
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Padding(
-      padding:
-          EdgeInsets.symmetric(vertical: widget.height * 0.05, horizontal: 30),
+      padding: EdgeInsets.symmetric(vertical: height * 0.05, horizontal: 30),
       child: Row(
         children: [
           Expanded(

@@ -21,7 +21,10 @@ class TileWidgets extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: InkWell(
         onTap: () {
-          context.read<FunctionalitiesProvider>().changePageIndex(index);
+          if (index == 6) {
+          } else {
+            context.read<FunctionalitiesProvider>().changePageIndex(index);
+          }
         },
         child: Center(
           child: FittedBox(

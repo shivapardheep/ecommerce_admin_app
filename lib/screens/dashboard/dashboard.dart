@@ -1,4 +1,4 @@
-import 'package:ecommerce_admin_app/constants.dart';
+import 'package:ecommerce_admin_app/constants/constants.dart';
 import 'package:ecommerce_admin_app/utils/functionalities/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,31 +35,33 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    return Padding(
-      padding: const EdgeInsets.only(left: 1),
-      child: Container(
-        color: Colors.white,
-        height: height,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              !Responsive.isDesktop(context)
-                  ? IconButton(
-                      onPressed: () => _openDrawer(),
-                      icon: const Icon(
-                        Icons.menu,
-                        color: Colors.black,
-                      ))
-                  : Container(),
-              const HeaderWidget(),
-              IntroCards(iconsList: iconsList),
-              SizedBox(height: height * 0.03),
-              const RecentOrderTitle(),
-              RecentOrdersWidget(ordersList: ordersList),
-            ],
-          ),
+    return Container(
+      height: height,
+      decoration: BoxDecoration(
+          color: Colors.grey.shade50,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(Responsive.isDesktop(context) ? 20 : 0),
+            bottomLeft: Radius.circular(Responsive.isDesktop(context) ? 20 : 0),
+          )),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            !Responsive.isDesktop(context)
+                ? IconButton(
+                    onPressed: () => _openDrawer(),
+                    icon: const Icon(
+                      Icons.menu,
+                      color: Colors.black,
+                    ))
+                : Container(),
+            const HeaderWidget(),
+            IntroCards(iconsList: iconsList),
+            SizedBox(height: height * 0.03),
+            const RecentOrderTitle(),
+            const RecentOrdersWidget(limit: 5),
+          ],
         ),
       ),
     );

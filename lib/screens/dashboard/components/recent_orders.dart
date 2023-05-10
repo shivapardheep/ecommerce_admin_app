@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constants.dart';
+import '../../../constants/constants.dart';
 import '../../../models/ordersModel.dart';
 import '../../../responsive.dart';
 import '../../../utils/functionalities/provider.dart';
@@ -32,12 +32,9 @@ class RecentOrderTitle extends StatelessWidget {
 }
 
 class RecentOrdersWidget extends StatelessWidget {
-  const RecentOrdersWidget({
-    super.key,
-    required this.ordersList,
-  });
+  final int limit;
 
-  final List<OrderModel> ordersList;
+  const RecentOrdersWidget({super.key, required this.limit});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +42,7 @@ class RecentOrdersWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         children: List.generate(
-            5,
+            limit,
             (index) => OrderCardWidget(
                 orderModel: ordersList[index], index: index, onTap: () {})),
       ),

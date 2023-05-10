@@ -1,8 +1,8 @@
-import 'package:ecommerce_admin_app/constants.dart';
+import 'package:ecommerce_admin_app/constants/constants.dart';
 import 'package:ecommerce_admin_app/responsive.dart';
 import 'package:ecommerce_admin_app/screens/message.dart';
 import 'package:ecommerce_admin_app/screens/orders.dart';
-import 'package:ecommerce_admin_app/screens/products.dart';
+import 'package:ecommerce_admin_app/screens/products/products.dart';
 import 'package:ecommerce_admin_app/screens/settings.dart';
 import 'package:ecommerce_admin_app/screens/transaction.dart';
 import 'package:ecommerce_admin_app/utils/functionalities/provider.dart';
@@ -37,17 +37,18 @@ class _HomeScreenState extends State<HomeScreen> {
         Provider.of<FunctionalitiesProvider>(context).getCurrentPageIndex;
     return Scaffold(
       key: homeScreenScaffold,
-      backgroundColor: Colors.grey.shade200,
+      // backgroundColor: Colors.grey.shade200,
+      backgroundColor: Colors.white,
       drawerEnableOpenDragGesture: false,
       drawer: const DrawerWidget(),
       endDrawer: const Drawer(),
       body: Row(
         children: [
-          Responsive.isDesktop(context)
-              ? const Expanded(flex: 2, child: DrawerWidget())
-              : Container(),
-          Expanded(flex: 6, child: screens[currentIndex]),
-          Responsive.isTablet(context) || Responsive.isDesktop(context)
+          Responsive.isDesktop(context) ? const DrawerWidget() : Container(),
+          Expanded(
+              flex: currentIndex == 0 ? 7 : 9, child: screens[currentIndex]),
+          (Responsive.isTablet(context) || Responsive.isDesktop(context)) &&
+                  currentIndex == 0
               ? Expanded(
                   flex: Responsive.isTablet(context) ? 3 : 2,
                   child: const ThirdScreen())

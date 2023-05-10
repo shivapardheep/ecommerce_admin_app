@@ -1,7 +1,7 @@
-import 'package:ecommerce_admin_app/constants.dart';
+import 'package:ecommerce_admin_app/constants/constants.dart';
+import 'package:ecommerce_admin_app/screens/dashboard/components/recent_orders.dart';
 import 'package:ecommerce_admin_app/widgets/header.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 import '../responsive.dart';
 
@@ -25,23 +25,26 @@ class _OrdersScreenState extends State<OrdersScreen> {
       height: height,
       width: width,
       color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          !Responsive.isDesktop(context)
-              ? IconButton(
-                  onPressed: () => _openDrawer(),
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.black,
-                  ))
-              : Container(),
-          const HeaderWidget(),
-          Center(
-            child: Lottie.asset("assets/lottie/working-in-progress.json",
-                repeat: true, height: height / 1.5),
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            !Responsive.isDesktop(context)
+                ? IconButton(
+                    onPressed: () => _openDrawer(),
+                    icon: const Icon(
+                      Icons.menu,
+                      color: Colors.black,
+                    ))
+                : Container(),
+            const HeaderWidget(),
+            RecentOrdersWidget(limit: ordersList.length),
+            // Center(
+            //   child: Lottie.asset("assets/lottie/working-in-progress.json",
+            //       repeat: true, height: height / 1.5),
+            // ),
+          ],
+        ),
       ),
     );
   }

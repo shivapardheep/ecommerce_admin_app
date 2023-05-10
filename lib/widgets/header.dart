@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../constants/constants.dart';
 
 class HeaderWidget extends StatefulWidget {
   const HeaderWidget({super.key});
@@ -28,8 +28,10 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               child: Container(
                 height: 40,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(color: Colors.grey.shade200)),
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(color: Colors.grey.shade200),
+                  color: Colors.grey.shade100,
+                ),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -68,11 +70,12 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                   borderRadius: BorderRadius.circular(50),
                   border: Border.all(color: Colors.grey.shade200),
                 ),
-                child: const Center(
+                child: Center(
                   child: Badge(
-                    label: Text('5', style: TextStyle(color: Colors.white)),
+                    label:
+                        const Text('5', style: TextStyle(color: Colors.white)),
                     backgroundColor: primaryColor,
-                    child: Icon(
+                    child: const Icon(
                       Icons.notifications_outlined,
                       size: 20,
                       color: Colors.grey,

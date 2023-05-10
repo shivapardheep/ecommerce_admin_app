@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'models/icons_model.dart';
-import 'models/ordersModel.dart';
+import '../models/icons_model.dart';
+import '../models/ordersModel.dart';
 
-const String appName = "Shiva Shoppi";
+const String appName = "Shop";
 const Color darkBlue = Color(0xff010b1c);
-const Color primaryColor = Colors.deepOrange;
+Color? primaryColor = Colors.deepOrange[700];
+Color? secondaryColor = Colors.deepOrange[600];
 GlobalKey<ScaffoldState> homeScreenScaffold = GlobalKey<ScaffoldState>();
 
 List<OrderModel> ordersList = [

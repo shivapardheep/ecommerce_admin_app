@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FunctionalitiesProvider extends ChangeNotifier {
-  int _currentPageIndex = 0;
+  int _currentPageIndex = 3;
   int get getCurrentPageIndex => _currentPageIndex;
   //
   bool _introCardAnimation = false;

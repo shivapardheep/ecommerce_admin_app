@@ -12,7 +12,7 @@ class DrawerWidget extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Drawer(
-      backgroundColor: Colors.white,
+      backgroundColor: bgColor,
       elevation: 0.0,
       width: 200,
       child: SingleChildScrollView(

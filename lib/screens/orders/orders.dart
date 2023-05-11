@@ -1,9 +1,11 @@
 import 'package:ecommerce_admin_app/constants/constants.dart';
-import 'package:ecommerce_admin_app/screens/dashboard/components/recent_orders.dart';
+import 'package:ecommerce_admin_app/screens/orders/components/ordersWidget.dart';
+import 'package:ecommerce_admin_app/utils/functionalities/provider.dart';
 import 'package:ecommerce_admin_app/widgets/header.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../responsive.dart';
+import '../../responsive.dart';
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({Key? key}) : super(key: key);
@@ -18,13 +20,25 @@ class _OrdersScreenState extends State<OrdersScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    context.read<FunctionalitiesProvider>().ordersAnimationFun();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Container(
       height: height,
       width: width,
-      color: Colors.white,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(Responsive.isDesktop(context) ? 20 : 0),
+          bottomLeft: Radius.circular(Responsive.isDesktop(context) ? 20 : 0),
+        ),
+        color: bgColor2,
+      ),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,11 +52,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     ))
                 : Container(),
             const HeaderWidget(),
-            RecentOrdersWidget(limit: ordersList.length),
-            // Center(
-            //   child: Lottie.asset("assets/lottie/working-in-progress.json",
-            //       repeat: true, height: height / 1.5),
-            // ),
+            OrdersWidget(limit: ordersList.length),
           ],
         ),
       ),

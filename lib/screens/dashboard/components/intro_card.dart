@@ -46,7 +46,7 @@ class MainCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isTranslated =
-        Provider.of<FunctionalitiesProvider>(context).getIntroCardAnimation;
+        Provider.of<FunctionalitiesProvider>(context).getDashBoardAnimation;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
       curve: Curves.linear,

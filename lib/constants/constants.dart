@@ -7,6 +7,8 @@ const String appName = "Shop";
 const Color darkBlue = Color(0xff010b1c);
 Color? primaryColor = Colors.deepOrange[700];
 Color? secondaryColor = Colors.deepOrange[600];
+Color? bgColor = Colors.white;
+Color? bgColor2 = Colors.grey.shade50;
 GlobalKey<ScaffoldState> homeScreenScaffold = GlobalKey<ScaffoldState>();
 
 List<OrderModel> ordersList = [

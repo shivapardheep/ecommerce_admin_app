@@ -1,7 +1,7 @@
 import 'package:ecommerce_admin_app/constants/constants.dart';
 import 'package:ecommerce_admin_app/responsive.dart';
 import 'package:ecommerce_admin_app/screens/message.dart';
-import 'package:ecommerce_admin_app/screens/orders.dart';
+import 'package:ecommerce_admin_app/screens/orders/orders.dart';
 import 'package:ecommerce_admin_app/screens/products/products.dart';
 import 'package:ecommerce_admin_app/screens/settings.dart';
 import 'package:ecommerce_admin_app/screens/transaction.dart';
@@ -37,8 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Provider.of<FunctionalitiesProvider>(context).getCurrentPageIndex;
     return Scaffold(
       key: homeScreenScaffold,
-      // backgroundColor: Colors.grey.shade200,
-      backgroundColor: Colors.white,
+      backgroundColor: bgColor,
       drawerEnableOpenDragGesture: false,
       drawer: const DrawerWidget(),
       endDrawer: const Drawer(),

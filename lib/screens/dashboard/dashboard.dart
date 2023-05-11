@@ -38,7 +38,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return Container(
       height: height,
       decoration: BoxDecoration(
-          color: Colors.grey.shade50,
+          color: bgColor2,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(Responsive.isDesktop(context) ? 20 : 0),
             bottomLeft: Radius.circular(Responsive.isDesktop(context) ? 20 : 0),

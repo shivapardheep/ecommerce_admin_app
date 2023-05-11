@@ -24,10 +24,10 @@ class ThirdScreen extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     bool isTranslated =
-        Provider.of<FunctionalitiesProvider>(context).getMessageCardAnimation;
+        Provider.of<FunctionalitiesProvider>(context).getDashBoardAnimation;
     return Container(
       height: height,
-      color: Colors.grey.shade50,
+      color: bgColor2,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,7 +114,7 @@ class MessageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isTranslated =
-        Provider.of<FunctionalitiesProvider>(context).getMessageCardAnimation;
+        Provider.of<FunctionalitiesProvider>(context).getDashBoardAnimation;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
       curve: Curves.linear,

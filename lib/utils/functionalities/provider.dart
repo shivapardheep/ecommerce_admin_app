@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 
 class FunctionalitiesProvider extends ChangeNotifier {
-  int _currentPageIndex = 3;
+  int _currentPageIndex = 2;
   int get getCurrentPageIndex => _currentPageIndex;
   //
-  bool _introCardAnimation = false;
-  bool get getIntroCardAnimation => _introCardAnimation;
+  bool _dashBoardAnimation = false;
+  bool get getDashBoardAnimation => _dashBoardAnimation;
   //
-  bool _recentOrderAnimation = false;
-  bool get getRecentOrderAnimation => _recentOrderAnimation;
-  //
-  bool _messageCardAnimation = false;
-  bool get getMessageCardAnimation => _messageCardAnimation;
-  //
-  bool _creditCardAnimation = false;
-  bool get getCreditCardAnimation => _creditCardAnimation;
+  bool _ordersAnimation = false;
+  bool get getOrdersAnimation => _ordersAnimation;
 
   changePageIndex(index) {
     _currentPageIndex = index;
@@ -23,16 +17,13 @@ class FunctionalitiesProvider extends ChangeNotifier {
 
   dashBoardAnimationFun() async {
     await Future.delayed(const Duration(seconds: 1));
-    _introCardAnimation = true;
-    _recentOrderAnimation = true;
-    _messageCardAnimation = true;
-    _creditCardAnimation = true;
+    _dashBoardAnimation = true;
     notifyListeners();
   }
 
-  disposeDashboardAnimation() {
-    _introCardAnimation = false;
-    _recentOrderAnimation = false;
+  ordersAnimationFun() async {
+    await Future.delayed(const Duration(seconds: 1));
+    _ordersAnimation = true;
     notifyListeners();
   }
 }

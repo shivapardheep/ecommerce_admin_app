@@ -6,40 +6,16 @@ import '../../../models/ordersModel.dart';
 import '../../../responsive.dart';
 import '../../../utils/functionalities/provider.dart';
 
-class RecentOrderTitle extends StatelessWidget {
-  const RecentOrderTitle({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text("Latest Orders",
-              style: TextStyle(fontWeight: FontWeight.bold)),
-          TextButton(
-              onPressed: () {},
-              child:
-                  const Text("See all", style: TextStyle(color: Colors.blue))),
-        ],
-      ),
-    );
-  }
-}
-
-class RecentOrdersWidget extends StatefulWidget {
+class OrdersWidget extends StatefulWidget {
   final int limit;
 
-  const RecentOrdersWidget({super.key, required this.limit});
+  const OrdersWidget({super.key, required this.limit});
 
   @override
-  State<RecentOrdersWidget> createState() => _RecentOrdersWidgetState();
+  State<OrdersWidget> createState() => _OrdersWidgetState();
 }
 
-class _RecentOrdersWidgetState extends State<RecentOrdersWidget> {
+class _OrdersWidgetState extends State<OrdersWidget> {
   int selectedOrder = 0;
 
   @override
@@ -49,27 +25,28 @@ class _RecentOrdersWidgetState extends State<RecentOrdersWidget> {
       child: Column(
         children: List.generate(
             widget.limit,
-            (index) => RecentOrderCardWidget(
-                orderModel: ordersList[index],
-                index: index,
-                onTap: () {
-                  setState(() {
-                    selectedOrder = index;
-                  });
-                },
-                selectedOrder: selectedOrder)),
+            (index) => OrdersCardWidget(
+                  orderModel: ordersList[index],
+                  index: index,
+                  onTap: () {
+                    setState(() {
+                      selectedOrder = index;
+                    });
+                  },
+                  selectedOrder: selectedOrder,
+                )),
       ),
     );
   }
 }
 
-class RecentOrderCardWidget extends StatefulWidget {
+class OrdersCardWidget extends StatefulWidget {
   final OrderModel orderModel;
   final int index;
   final VoidCallback onTap;
   final int selectedOrder;
 
-  const RecentOrderCardWidget(
+  const OrdersCardWidget(
       {super.key,
       required this.orderModel,
       required this.index,
@@ -77,14 +54,14 @@ class RecentOrderCardWidget extends StatefulWidget {
       required this.selectedOrder});
 
   @override
-  State<RecentOrderCardWidget> createState() => _RecentOrderCardWidgetState();
+  State<OrdersCardWidget> createState() => _OrdersCardWidgetState();
 }
 
-class _RecentOrderCardWidgetState extends State<RecentOrderCardWidget> {
+class _OrdersCardWidgetState extends State<OrdersCardWidget> {
   @override
   Widget build(BuildContext context) {
     bool isTranslated =
-        Provider.of<FunctionalitiesProvider>(context).getDashBoardAnimation;
+        Provider.of<FunctionalitiesProvider>(context).getOrdersAnimation;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),

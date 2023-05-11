@@ -27,13 +27,20 @@ class _ProductsScreenState extends State<ProductsScreen> {
       height: height,
       width: width,
       decoration: BoxDecoration(
-          color: Colors.grey.shade50,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(Responsive.isDesktop(context) ? 20 : 0),
-            bottomLeft: Radius.circular(Responsive.isDesktop(context) ? 20 : 0),
-          )
-          // BorderRadius.circular(Responsive.isDesktop(context) ? 50 : 0),
-          ),
+        color: bgColor2,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(Responsive.isDesktop(context) ? 20 : 0),
+          bottomLeft: Radius.circular(Responsive.isDesktop(context) ? 20 : 0),
+        ),
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.grey.withOpacity(0.2),
+        //     offset: const Offset(0, 1),
+        //     blurRadius: 1,
+        //     spreadRadius: 1,
+        //   ),
+        // ],
+      ),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
